@@ -14,7 +14,6 @@ namespace Memorandum.CategoryServices
         public static IServiceCollection AddCategoryService(this IServiceCollection services)
         {
             services.AddTransient<ICategoryService, CategoryService>();
-            services.AddAutoMapper(typeof(AddCategoryModelProfile), typeof(CategoryModelProfile), typeof(UpdateCategoryModelProfile));
             return services;
         }
     }

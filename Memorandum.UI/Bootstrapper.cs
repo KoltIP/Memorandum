@@ -1,5 +1,8 @@
 ﻿using Memorandum.CategoryServices;
+using Memorandum.CategoryServices.Models;
 using Memorandum.NoteServices;
+using Memorandum.UI.Models.Category;
+using Memorandum.UI.Models.Note;
 
 namespace Memorandum.UI
 {
