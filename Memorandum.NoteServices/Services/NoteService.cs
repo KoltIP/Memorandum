@@ -37,9 +37,16 @@ namespace Memorandum.NoteServices.Services
 
         public async Task<NoteModel> GetNote(int id)
         {
-            var note = await _dbContext.Notes.FirstOrDefaultAsync(x => x.Id == id);
-
-            return _mapper.Map<NoteModel>(note);
+            try
+            {
+                var note = await _dbContext.Notes.FirstOrDefaultAsync(x => x.Id == id);            
+                return _mapper.Map<NoteModel>(note);
+            }
+            catch
+            {
+                Console.WriteLine("Плохо");
+            }
+            return new NoteModel();
         }
 
         public async Task<NoteModel> AddNote(AddNoteModel model)

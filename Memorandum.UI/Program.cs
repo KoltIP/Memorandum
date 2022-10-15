@@ -1,6 +1,6 @@
 using Memorandum.Db.Context.Context;
 using Memorandum.UI;
-using Memorandum.UI.Configuration;
+using Memorandum.UI.Configuration.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
