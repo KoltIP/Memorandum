@@ -18,6 +18,7 @@ namespace Memorandum.NoteServices.Services
 
         public NoteService(MemorandumDbContext dbContext, IMapper mapper)
         {
+            
             _dbContext = dbContext;
             _mapper = mapper;
         }

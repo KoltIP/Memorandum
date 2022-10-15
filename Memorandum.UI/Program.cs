@@ -1,5 +1,6 @@
 using Memorandum.Db.Context.Context;
 using Memorandum.UI;
+using Memorandum.UI.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -10,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddMvcCore();
+
+builder.Services.AddAutoMappers();
 
 builder.Services.AddDbContext<MemorandumDbContext>(options =>
 {
