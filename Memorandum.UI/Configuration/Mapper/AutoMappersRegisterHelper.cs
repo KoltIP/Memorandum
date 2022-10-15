@@ -1,4 +1,4 @@
-﻿namespace Memorandum.UI.Configuration
+﻿namespace Memorandum.UI.Configuration.Mapper
 {
     public static class AutoMappersRegisterHelper
     {
