@@ -14,6 +14,9 @@ namespace Memorandum.NoteServices
         public static IServiceCollection AddNoteService(this IServiceCollection services)
         {
             services.AddTransient<INoteService, NoteService>();
+            services.AddAutoMapper(typeof(AddNoteModelProfile));
+            services.AddAutoMapper(typeof(NoteModelProfile));
+            services.AddAutoMapper(typeof(UpdateNoteModelProfile));
             return services;
         }
     }
