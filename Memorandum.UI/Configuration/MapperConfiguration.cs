@@ -1,4 +1,6 @@
-﻿namespace Memorandum.UI.Configuration.Mapper
+﻿using Memorandum.Shared.Mapper;
+
+namespace Memorandum.UI.Configuration
 {
     public static class MapperConfiguration
     {

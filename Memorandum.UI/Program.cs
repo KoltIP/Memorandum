@@ -1,10 +1,10 @@
 using Memorandum.Db.Context.Context;
 using Memorandum.UI;
-using Memorandum.UI.Configuration.Mapper;
+using Memorandum.Shared.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-
-
+using Microsoft.Extensions.DependencyInjection;
+using Memorandum.UI.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,11 +14,11 @@ builder.Services.AddMvcCore();
 
 builder.Services.AddAutoMappers();
 
+
 builder.Services.AddDbContext<MemorandumDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
 
 builder.Services.AddAppServices();
 
@@ -41,5 +41,7 @@ app.UseRouting();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+//app.MapControllers();
 
 app.Run();

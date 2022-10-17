@@ -26,7 +26,7 @@ namespace Memorandum.UI.Models.Category
 
     public class AddCategoryRequestProfile : Profile
     {
-        AddCategoryRequestProfile()
+        public AddCategoryRequestProfile()
         {
             CreateMap<AddCategoryRequest, AddCategoryModel>();
         }

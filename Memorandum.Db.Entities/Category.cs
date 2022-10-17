@@ -13,4 +13,5 @@ namespace Memorandum.Db.Entities
         public string Description { get; set; } = String.Empty;
         public List<Note> Notes { get; set; }
     }
+
 }

@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Memorandum.CategoryServices\Memorandum.CategoryServices.csproj" />
     <ProjectReference Include="..\Memorandum.NoteServices\Memorandum.NoteServices.csproj" />
+    <ProjectReference Include="..\Memorandum.Shared\Memorandum.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -32,7 +32,7 @@ namespace Memorandum.UI.Models.Note
 
     public class AddNoteRequestProfile : Profile
     {
-        AddNoteRequestProfile()
+        public AddNoteRequestProfile()
         {
             CreateMap<AddNoteRequest, AddNoteModel>();
         }

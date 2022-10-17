@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Memorandum.CategoryServices.Models;
 using Memorandum.CategoryServices.Services;
-using Memorandum.NoteServices.Services;
 using Memorandum.UI.Models.Category;
-using Memorandum.UI.Models.Note;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Memorandum.UI.Controllers
@@ -23,12 +21,20 @@ namespace Memorandum.UI.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IEnumerable<CategoryResponse>> GetCategories()
+        public async Task<IActionResult> IndexAsync()
         {
             var categories = await _categoryService.GetCategories();
             var response = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
-            return response;
+            return View("Category", response);
         }
+
+        //[HttpGet("")]
+        //public async Task<IEnumerable<CategoryResponse>> GetCategories()
+        //{
+        //    var categories = await _categoryService.GetCategories();
+        //    var response = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
+        //    return response;
+        //}
 
         [HttpGet("{id}")]
         public async Task<CategoryResponse> GetCategory([FromRoute]int id)

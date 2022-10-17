@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation.Resources;
 using Memorandum.CategoryServices.Models;
 using Memorandum.Db.Context.Context;
 using Memorandum.Db.Entities;
@@ -31,7 +32,21 @@ namespace Memorandum.CategoryServices.Services
                         .Skip(Math.Max(offset, 0))
                         .Take(Math.Max(0, Math.Min(limit, 1000)));
 
-            var categoryModelList = (await categories.ToListAsync()).Select(category => _mapper.Map<CategoryModel>(category));
+            //var categoryList = await categories.ToListAsync();
+            //IEnumerable<CategoryModel> categoryModelList = categoryList.Select(category => _mapper.Map<CategoryModel>(category));
+
+            List<Category> categoryEntityList = categories.ToList<Category>();
+            List<CategoryModel> categoryModelList = new List<CategoryModel>();
+            for (int i = 0; i < categoryEntityList.Count; i++)
+            {
+                categoryModelList.Add(new CategoryModel()
+                {
+                    Id = categoryEntityList[i].Id,
+                    Name = categoryEntityList[i].Name,
+                    Description = categoryEntityList[i].Description,
+                });
+            }
+
             return categoryModelList;
         }
 

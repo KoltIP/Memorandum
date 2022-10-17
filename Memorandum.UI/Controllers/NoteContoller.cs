@@ -2,7 +2,6 @@
 using Memorandum.NoteServices.Models;
 using Memorandum.NoteServices.Services;
 using Memorandum.UI.Models.Note;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Memorandum.UI.Controllers
@@ -20,14 +19,20 @@ namespace Memorandum.UI.Controllers
             _mapper = mapper;
             _logger = logger;
         }
-
         [HttpGet("")]
-        public async Task<IEnumerable<NoteResponse>> GetNotes()
+        public IActionResult Index()
         {
-            var notes = await _noteService.GetNotes();
-            var response = _mapper.Map<IEnumerable<NoteResponse>>(notes);
-            return response;
+            return View("Note");
         }
+
+        //[HttpGet("")]
+        //public async Task<IActionResult>/*Task<IEnumerable<NoteResponse>>*/ GetNotes()
+        //{
+        //    var notes = await _noteService.GetNotes();
+        //    var response = _mapper.Map<IEnumerable<NoteResponse>>(notes);
+        //    //return response;
+        //    return View(response);
+        //}
 
         [HttpGet("{id}")]
         public async Task<NoteResponse> GetNote([FromRoute] int id)

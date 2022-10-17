@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Memorandum.Db.Context\Memorandum.Db.Context.csproj" />
+    <ProjectReference Include="..\Memorandum.Shared\Memorandum.Shared.csproj" />
   </ItemGroup>
 
 </Project>

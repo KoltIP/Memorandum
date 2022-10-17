@@ -35,7 +35,7 @@ namespace Memorandum.NoteServices.Models
 
     public class AddNoteModelProfile : Profile
     {
-        AddNoteModelProfile()
+        public AddNoteModelProfile()
         {
             CreateMap<AddNoteModel, Note>();
         }

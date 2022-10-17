@@ -19,7 +19,7 @@ namespace Memorandum.NoteServices.Models
     }
     public class NoteModelProfile : Profile
     {
-        NoteModelProfile()
+        public NoteModelProfile()
         {
             CreateMap<Note, NoteModel>();
         }

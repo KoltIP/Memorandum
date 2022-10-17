@@ -26,9 +26,9 @@ namespace Memorandum.UI.Models.Category
 
     public class CategoryResponseProfile : Profile
     {
-        CategoryResponseProfile()
+        public CategoryResponseProfile()
         {
-            CreateMap<CategoryResponse, CategoryModel>();
+            CreateMap<CategoryModel, CategoryResponse>();
         }
     }
 }

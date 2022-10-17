@@ -15,7 +15,8 @@ namespace Memorandum.UI.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            //return View("Redirect");
+            return Redirect("Category");
         }
 
         public IActionResult Privacy()
