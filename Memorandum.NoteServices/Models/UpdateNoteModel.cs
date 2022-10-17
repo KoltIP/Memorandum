@@ -36,7 +36,7 @@ namespace Memorandum.NoteServices.Models
 
     public class UpdateNoteModelProfile : Profile
     {
-        UpdateNoteModelProfile()
+        public UpdateNoteModelProfile()
         {
             CreateMap<UpdateNoteModel, Note>();
         }

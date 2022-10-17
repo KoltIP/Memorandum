@@ -26,7 +26,7 @@ namespace Memorandum.UI.Models.Category
 
     public class UpdateCategoryRequestProfile : Profile
     {
-        UpdateCategoryRequestProfile()
+        public UpdateCategoryRequestProfile()
         {
             CreateMap<UpdateCategoryRequest, UpdateCategoryModel>();
         }

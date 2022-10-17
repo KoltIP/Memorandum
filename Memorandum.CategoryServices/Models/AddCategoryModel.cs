@@ -31,7 +31,7 @@ namespace Memorandum.CategoryServices.Models
 
     public class AddCategoryModelProfile : Profile
     {
-        AddCategoryModelProfile()
+        public AddCategoryModelProfile()
         {
             CreateMap<AddCategoryModel, Category>();
         }

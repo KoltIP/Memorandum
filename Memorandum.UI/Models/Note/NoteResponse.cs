@@ -34,7 +34,7 @@ namespace Memorandum.UI.Models.Note
 
     public class NoteResponseProfile : Profile
     {
-        NoteResponseProfile()
+        public NoteResponseProfile()
         {
             CreateMap<NoteResponse, NoteModel>();
         }

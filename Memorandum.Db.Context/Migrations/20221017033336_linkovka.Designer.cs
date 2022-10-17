@@ -3,6 +3,7 @@ using System;
 using Memorandum.Db.Context.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Memorandum.Db.Context.Migrations
 {
     [DbContext(typeof(MemorandumDbContext))]
-    partial class MemorandumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221017033336_linkovka")]
+    partial class linkovka
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Memorandum.NoteServices", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Memorandum.CategoryServices", "Memorandum.CategoryServices\Memorandum.CategoryServices.csproj", "{604C0A15-4C73-409A-BCB7-F8C68E2C93BA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{45EB8F4D-42E1-4A80-8A1B-FB77AC51FE36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memorandum.Shared", "Memorandum.Shared\Memorandum.Shared.csproj", "{589204D7-1DF3-4CB9-A9E5-2975F2310980}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{604C0A15-4C73-409A-BCB7-F8C68E2C93BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{604C0A15-4C73-409A-BCB7-F8C68E2C93BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{604C0A15-4C73-409A-BCB7-F8C68E2C93BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589204D7-1DF3-4CB9-A9E5-2975F2310980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589204D7-1DF3-4CB9-A9E5-2975F2310980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589204D7-1DF3-4CB9-A9E5-2975F2310980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589204D7-1DF3-4CB9-A9E5-2975F2310980}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{DA21622D-5994-4171-8C3E-20BBB96FF99C} = {8044FDFB-D000-4BA1-846F-DA812326F53E}
 		{502204E3-F4A0-4A29-925E-C534F6C26913} = {ABB1BF3A-5F53-47F2-9789-ADE5D2D55FA8}
 		{604C0A15-4C73-409A-BCB7-F8C68E2C93BA} = {ABB1BF3A-5F53-47F2-9789-ADE5D2D55FA8}
+		{589204D7-1DF3-4CB9-A9E5-2975F2310980} = {45EB8F4D-42E1-4A80-8A1B-FB77AC51FE36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {85A9CE0E-E7AF-4C96-BF56-96473E33192E}

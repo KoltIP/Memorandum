@@ -17,7 +17,7 @@ namespace Memorandum.Db.Context.Context
         
         public MemorandumDbContext(DbContextOptions<MemorandumDbContext> option) : base(option)
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -36,7 +36,7 @@ namespace Memorandum.Db.Context.Context
             modelBuilder.Entity<Category>().HasIndex(x => x.Name).IsUnique();
             modelBuilder.Entity<Category>().Property(x => x.Description).HasMaxLength(50);
 
-            //modelBuilder.Entity<Note>().HasOne(x => x.Categoria).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Note>().HasOne(x => x.Categoria).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Restrict);
 
             //DbSeed.AddData(this);
         }
