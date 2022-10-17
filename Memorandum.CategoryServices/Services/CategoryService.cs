@@ -35,18 +35,6 @@ namespace Memorandum.CategoryServices.Services
             var categoryList = await categories.ToListAsync();
             IEnumerable<CategoryModel> categoryModelList = categoryList.Select(category => _mapper.Map<CategoryModel>(category));
 
-            //List<Category> categoryEntityList = categories.ToList<Category>();
-            //List<CategoryModel> categoryModelList = new List<CategoryModel>();
-            //for (int i = 0; i < categoryEntityList.Count; i++)
-            //{
-            //    categoryModelList.Add(new CategoryModel()
-            //    {
-            //        Id = categoryEntityList[i].Id,
-            //        Name = categoryEntityList[i].Name,
-            //        Description = categoryEntityList[i].Description,
-            //    });
-            //}
-
             return categoryModelList;
         }
 
