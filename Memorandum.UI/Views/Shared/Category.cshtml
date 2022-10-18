@@ -22,7 +22,7 @@
                         @Html.DisplayNameFor(model => model.Description)
                     </th>
                     <th>
-                        <a asp-action="AddOrUpdateCategory"
+                        <a asp-action="OpenAddCategoryPage"
                             class="btn btn-sm btn-success">
                             <i class="fa-solid fa-plus">
                                 New
@@ -54,6 +54,14 @@
                                 </button>
                             </div>
                         </form>
+                        <hr/>
+                        <a asp-action="OpenUpdateCategoryPage" asp-route-id="@item.Id">
+                            <div class="btn-group btn-group-sm">
+                                <button type="submit" class="btn btn-warning">
+                                    <i class="far fa-trash-alt">Update</i>
+                                </button>
+                            </div>
+                        </a>
                     </td>
                 </tr>
             }        
