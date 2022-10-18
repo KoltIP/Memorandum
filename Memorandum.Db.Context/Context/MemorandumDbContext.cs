@@ -1,5 +1,4 @@
-﻿using Memorandum.Db.Context.Setup;
-using Memorandum.Db.Entities;
+﻿using Memorandum.Db.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,8 +34,6 @@ namespace Memorandum.Db.Context.Context
             modelBuilder.Entity<Category>().Property(x => x.Description).HasMaxLength(50);
 
             modelBuilder.Entity<Note>().HasOne(x => x.Categoria).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Cascade);
-
-            //DbSeed.AddData(this);
         }
 
     }

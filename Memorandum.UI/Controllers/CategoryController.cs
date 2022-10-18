@@ -48,7 +48,7 @@ namespace Memorandum.UI.Controllers
             var model = _mapper.Map<AddCategoryModel>(request);
             var category = await _categoryService.AddCategory(model);
             var response = _mapper.Map<CategoryResponse>(category);
-            return Redirect("Category");
+            return Redirect("/category");
         }
 
         [HttpGet("/OpenUpdateCategoryPage")]
@@ -64,7 +64,7 @@ namespace Memorandum.UI.Controllers
         {
             UpdateCategoryModel model = _mapper.Map<UpdateCategoryModel>(request);
             await _categoryService.UpdateCategory(id,model);
-            return Redirect("Category");
+            return Redirect("/category");
         }
 
 
@@ -82,7 +82,7 @@ namespace Memorandum.UI.Controllers
             await _categoryService.DeleteCategory(id);
             var categories = await _categoryService.GetCategories();
             var response = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
-            return View("Category", response);
+            return View("/category", response);
         }
     }
 }

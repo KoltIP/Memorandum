@@ -48,7 +48,7 @@ namespace Memorandum.UI.Controllers
             var model = _mapper.Map<AddNoteModel>(request);
             var note = await _noteService.AddNote(model);
             var response = _mapper.Map<NoteResponse>(note);
-            return Redirect("Note");
+            return Redirect("/note");
         }
 
         [HttpGet("/OpenNoteUpdatePage")]
@@ -64,16 +64,7 @@ namespace Memorandum.UI.Controllers
         {
             UpdateNoteModel model = _mapper.Map<UpdateNoteModel>(request);
             await _noteService.UpdateNote(id, model);
-            return Redirect("Note");
-        }
-
-
-        [HttpPut("{id}")]
-        public async Task<OkResult> UpdateNote([FromRoute] int id, [FromBody] UpdateNoteRequest request)
-        {
-            var model = _mapper.Map<UpdateNoteModel>(request);
-            await _noteService.UpdateNote(id, model);
-            return Ok();
+            return Redirect("/note");
         }
 
         [HttpPost("{id}")]

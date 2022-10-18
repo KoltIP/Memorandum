@@ -31,10 +31,7 @@ namespace Memorandum.NoteServices.Services
 
             notes = notes                        
                         .Skip(Math.Max(offset, 0))
-                        .Take(Math.Max(0, Math.Min(limit, 1000)));
-
-            
-
+                        .Take(Math.Max(0, Math.Min(limit, 1000)));          
 
             var noteList = await notes.ToListAsync();
             IEnumerable<NoteModel> noteModelList = noteList.Select(note => _mapper.Map<NoteModel>(note));
