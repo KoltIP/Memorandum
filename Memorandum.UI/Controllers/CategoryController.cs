@@ -28,14 +28,6 @@ namespace Memorandum.UI.Controllers
             return View("Category", response);
         }
 
-        //[HttpGet("")]
-        //public async Task<IEnumerable<CategoryResponse>> GetCategories()
-        //{
-        //    var categories = await _categoryService.GetCategories();
-        //    var response = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
-        //    return response;
-        //}
-
         [HttpGet("{id}")]
         public async Task<CategoryResponse> GetCategory([FromRoute]int id)
         {
@@ -44,13 +36,19 @@ namespace Memorandum.UI.Controllers
             return response;
         }
 
+        [HttpGet("openpage")]
+        public IActionResult AddOrUpdateCategory()
+        {
+            return View();
+        }
+
         [HttpPost("")]
-        public async Task<CategoryResponse> AddCategory([FromBody]AddCategoryRequest request)
+        public async Task<IActionResult> AddOrEdit(AddCategoryRequest request)
         {
             var model = _mapper.Map<AddCategoryModel>(request);
             var category = await _categoryService.AddCategory(model);
             var response = _mapper.Map<CategoryResponse>(category);
-            return response;
+            return Redirect("Category");
         }
 
 
@@ -62,11 +60,13 @@ namespace Memorandum.UI.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<OkResult> DeleteCategory([FromRoute]int id)
+        [HttpPost("{id}")]
+        public async Task<IActionResult> DeleteCategory([FromRoute] int id)
         {
             await _categoryService.DeleteCategory(id);
-            return Ok();
+            var categories = await _categoryService.GetCategories();
+            var response = _mapper.Map<IEnumerable<CategoryResponse>>(categories);
+            return View("Category", response);
         }
     }
 }

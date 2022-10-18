@@ -23,4 +23,5 @@ namespace Memorandum.CategoryServices.Models
             CreateMap<Category, CategoryModel>();
         }
     }
+
 }
