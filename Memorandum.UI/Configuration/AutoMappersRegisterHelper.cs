@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Memorandum.Shared.Mapper
+namespace Memorandum.UI.Configuration
 {
     public static class AutoMappersRegisterHelper
     {

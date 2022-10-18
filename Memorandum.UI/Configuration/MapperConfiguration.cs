@@ -1,4 +1,4 @@
-﻿using Memorandum.Shared.Mapper;
+﻿using Memorandum.UI.Configuration;
 
 namespace Memorandum.UI.Configuration
 {
