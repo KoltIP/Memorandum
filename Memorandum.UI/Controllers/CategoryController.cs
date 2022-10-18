@@ -36,18 +36,34 @@ namespace Memorandum.UI.Controllers
             return response;
         }
 
-        [HttpGet("openpage")]
-        public IActionResult AddOrUpdateCategory()
+        [HttpGet("/OpenAddCategoryPage")]
+        public IActionResult OpenAddCategoryPage()
         {
-            return View();
+            return View("AddCategory");
         }
 
-        [HttpPost("")]
-        public async Task<IActionResult> AddOrEdit(AddCategoryRequest request)
+        [HttpPost("AddCategory")]
+        public async Task<IActionResult> Add(AddCategoryRequest request)
         {
             var model = _mapper.Map<AddCategoryModel>(request);
             var category = await _categoryService.AddCategory(model);
             var response = _mapper.Map<CategoryResponse>(category);
+            return Redirect("Category");
+        }
+
+        [HttpGet("/OpenUpdateCategoryPage")]
+        public async Task<IActionResult> OpenUpdateCategoryPageAsync(int id)
+        {
+            var category = await _categoryService.GetCategory(id);
+            var response = _mapper.Map<CategoryResponse>(category);
+            return View("UpdateCategory",response);
+        }
+
+        [HttpPost("UpdateCategory")]
+        public async Task<IActionResult> Update(int id, UpdateCategoryRequest request)
+        {
+            UpdateCategoryModel model = _mapper.Map<UpdateCategoryModel>(request);
+            await _categoryService.UpdateCategory(id,model);
             return Redirect("Category");
         }
 

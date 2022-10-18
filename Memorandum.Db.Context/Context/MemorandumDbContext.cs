@@ -24,19 +24,17 @@ namespace Memorandum.Db.Context.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Note>().ToTable("notes");
-           // modelBuilder.Entity<Note>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Note>().Property(x => x.Name).IsRequired();
             modelBuilder.Entity<Note>().Property(x => x.Description).HasMaxLength(50);
             modelBuilder.Entity<Note>().HasIndex(x => x.Name).IsUnique();
 
             modelBuilder.Entity<Category>().ToTable("categories");
-            //modelBuilder.Entity<Category>().Property(x => x.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Category>().Property(x => x.Name).IsRequired();
             modelBuilder.Entity<Category>().Property(x => x.Name).HasMaxLength(50);
             modelBuilder.Entity<Category>().HasIndex(x => x.Name).IsUnique();
             modelBuilder.Entity<Category>().Property(x => x.Description).HasMaxLength(50);
 
-            modelBuilder.Entity<Note>().HasOne(x => x.Categoria).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Note>().HasOne(x => x.Categoria).WithMany(x => x.Notes).HasForeignKey(x => x.CategoryId).OnDelete(DeleteBehavior.Cascade);
 
             //DbSeed.AddData(this);
         }

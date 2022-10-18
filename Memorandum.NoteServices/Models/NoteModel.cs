@@ -21,7 +21,8 @@ namespace Memorandum.NoteServices.Models
     {
         public NoteModelProfile()
         {
-            CreateMap<Note, NoteModel>();
+            CreateMap<Note, NoteModel>()
+                .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Categoria.Name));
         }
     }
 }

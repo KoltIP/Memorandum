@@ -12,8 +12,7 @@ namespace Memorandum.Db.Entities
         public string Name { get; set; } = String.Empty;
         public string Description { get; set; } = String.Empty;
         public string? Img { get; set; } = String.Empty;
-        public string Category { get; set; } = String.Empty;
         public int CategoryId { get; set; }
-        public virtual Category? Categoria { get; set; } = null;
+        public virtual Category Categoria { get; set; } 
     }
 }

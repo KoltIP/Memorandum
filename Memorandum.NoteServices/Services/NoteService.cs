@@ -26,33 +26,34 @@ namespace Memorandum.NoteServices.Services
         public async Task<IEnumerable<NoteModel>> GetNotes(int offset = 0, int limit = 10)
         {
             var notes = _dbContext.Notes.AsQueryable();
+            
+            notes = notes.Include(x => x.Categoria);
 
-            notes = notes
+            notes = notes                        
                         .Skip(Math.Max(offset, 0))
                         .Take(Math.Max(0, Math.Min(limit, 1000)));
 
-            var noteModelList = (await notes.ToListAsync()).Select(note => _mapper.Map<NoteModel>(note));
+            
+
+
+            var noteList = await notes.ToListAsync();
+            IEnumerable<NoteModel> noteModelList = noteList.Select(note => _mapper.Map<NoteModel>(note));
+
             return noteModelList;
         }
 
         public async Task<NoteModel> GetNote(int id)
         {
-            try
-            {
-                var note = await _dbContext.Notes.FirstOrDefaultAsync(x => x.Id == id);            
-                return _mapper.Map<NoteModel>(note);
-            }
-            catch
-            {
-                Console.WriteLine("Плохо");
-            }
-            return new NoteModel();
+            var note = await _dbContext.Notes.FirstOrDefaultAsync(x => x.Id == id);
+
+            return _mapper.Map<NoteModel>(note);
         }
 
         public async Task<NoteModel> AddNote(AddNoteModel model)
         {
             var note = _mapper.Map<Note>(model);
-            var noteModel = _mapper.Map<NoteModel>(await _dbContext.Notes.AddAsync(note));
+            var entityEntry = await _dbContext.Notes.AddAsync(note);
+            var noteModel = _mapper.Map<NoteModel>(entityEntry.Entity);
             _dbContext.SaveChanges();
 
             return noteModel;

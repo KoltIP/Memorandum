@@ -19,20 +19,14 @@ namespace Memorandum.UI.Controllers
             _mapper = mapper;
             _logger = logger;
         }
-        [HttpGet("")]
-        public IActionResult Index()
-        {
-            return View("Note");
-        }
 
-        //[HttpGet("")]
-        //public async Task<IActionResult>/*Task<IEnumerable<NoteResponse>>*/ GetNotes()
-        //{
-        //    var notes = await _noteService.GetNotes();
-        //    var response = _mapper.Map<IEnumerable<NoteResponse>>(notes);
-        //    //return response;
-        //    return View(response);
-        //}
+        [HttpGet("")]
+        public async Task<IActionResult> IndexAsync()
+        {
+            var notes = await _noteService.GetNotes();
+            var response = _mapper.Map<IEnumerable<NoteResponse>>(notes);
+            return View("Note", response);
+        }
 
         [HttpGet("{id}")]
         public async Task<NoteResponse> GetNote([FromRoute] int id)
@@ -42,13 +36,35 @@ namespace Memorandum.UI.Controllers
             return response;
         }
 
-        [HttpPost("")]
-        public async Task<NoteResponse> AddNote([FromBody] AddNoteRequest request)
+        [HttpGet("/OpenNoteAddPage")]
+        public IActionResult OpenAddNotePage()
+        {
+            return View("AddNote");
+        }
+
+        [HttpPost("AddNote")]
+        public async Task<IActionResult> Add(AddNoteRequest request)
         {
             var model = _mapper.Map<AddNoteModel>(request);
             var note = await _noteService.AddNote(model);
             var response = _mapper.Map<NoteResponse>(note);
-            return response;
+            return Redirect("Note");
+        }
+
+        [HttpGet("/OpenNoteUpdatePage")]
+        public async Task<IActionResult> OpenUpdateNotePageAsync(int id)
+        {
+            var note = await _noteService.GetNote(id);
+            var response = _mapper.Map<NoteResponse>(note);
+            return View("UpdateNote", response);
+        }
+
+        [HttpPost("UpdateNote")]
+        public async Task<IActionResult> Update(int id, UpdateNoteRequest request)
+        {
+            UpdateNoteModel model = _mapper.Map<UpdateNoteModel>(request);
+            await _noteService.UpdateNote(id, model);
+            return Redirect("Note");
         }
 
 
@@ -60,11 +76,13 @@ namespace Memorandum.UI.Controllers
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<OkResult> DeleteNote([FromRoute] int id)
+        [HttpPost("{id}")]
+        public async Task<IActionResult> DeleteNote([FromRoute] int id)
         {
             await _noteService.DeleteNote(id);
-            return Ok();
+            var notes = await _noteService.GetNotes();
+            var response = _mapper.Map<IEnumerable<NoteResponse>>(notes);
+            return View("Note", response);
         }
     }
 }
