@@ -17,6 +17,7 @@ namespace Memorandum.CategoryServices
             services.AddAutoMapper(typeof(AddCategoryModelProfile));
             services.AddAutoMapper(typeof(CategoryModelProfile));
             services.AddAutoMapper(typeof(UpdateCategoryModelProfile));
+            
             return services;
         }
     }

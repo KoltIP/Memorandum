@@ -4,9 +4,11 @@ using Memorandum.CategoryServices.Models;
 using Memorandum.Db.Context.Context;
 using Memorandum.Db.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +50,8 @@ namespace Memorandum.CategoryServices.Services
         public async Task<CategoryModel> AddCategory(AddCategoryModel model)
         {
             var category = _mapper.Map<Category>(model);
-            var categoryModel = _mapper.Map<CategoryModel>(await _dbContext.Categories.AddAsync(category));
+            var entityEntry = await _dbContext.Categories.AddAsync(category);
+            var categoryModel = _mapper.Map<CategoryModel>(entityEntry.Entity);            
             _dbContext.SaveChanges();
 
             return categoryModel;
